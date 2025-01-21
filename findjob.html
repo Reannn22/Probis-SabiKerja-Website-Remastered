@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    button {
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--base-color2);
+      color: var(--body-color2);
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s ease;
+    }
+
+    button:hover {
+      background-color: #666462;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #fce7d3;
+      padding: 2rem;
+    }
+
+    .header {
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .header h1 span.red {
+      color: #d32f2f;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .search-container input {
+      width: 50%;
+      padding: 0.8rem;
+      border: 2px solid transparent;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+      font-size: 16px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-container input:focus {
+      border-color: #c41e3a;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(196, 30, 58, 0.15);
+    }
+
+    .search-container input::placeholder {
+      color: #666;
+      transition: color 0.3s ease;
+    }
+
+    .search-container input:focus::placeholder {
+      color: #c41e3a;
+    }
+
+    .search-container button {
+      padding: 0.8rem 1.5rem;
+      background-color: #c41e3a;
+      color: white;
+      border: 2px solid #c41e3a;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .search-container button::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s ease;
+    }
+
+    .search-container button:hover {
+      background-color: white;
+      color: #c41e3a;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(196, 30, 58, 0.2);
+    }
+
+    .search-container button:hover::after {
+      left: 100%;
+    }
+
+    .search-container button:active {
+      transform: translateY(1px);
+    }
+
+    .jobs-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .job-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .job-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .job-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(255,75,51,0.1));
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .job-card:hover::before {
+      transform: translateX(0);
+    }
+
+    .job-title {
+      color: #d32f2f;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .job-card:hover .job-title {
+      color: #FF4B33;
+    }
+
+    .company, .location {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .company span, .location span {
+      font-weight: bold;
+    }
+
+    .description {
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .apply-btn {
+      background-color: #c41e3a;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: 2px solid #c41e3a;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .apply-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: white;
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+
+    .apply-btn:hover {
+      color: #c41e3a;
+    }
+
+    .apply-btn:hover::before {
+      left: 0;
+    }
+
+    .apply-btn:hover {
+      background-color: white;
+      color: #c41e3a;
+      border: 2px solid #c41e3a;
+    }
+
+    /* Footer Section */
+    .footer {
+      padding-top: 150px;
+      background: #fce7d3;
+      border-top: 1px solid #eee;
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding: 0 20px;
+    }
+    
+    .footer-logo img {
+      width: 200px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-contact h3 {
+      color: #333;
+      margin-bottom: 15px;
+    }
+    
+    .footer-contact p {
+      color: #FF4B33;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    .footer-address {
+      color: #666;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+    
+    .footer-links h3 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: #FF4B33;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-links img {
+      width: 50px;
+      height: 50px;
+      margin: 0 -5px;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+    
+    .social-links:hover {
+      transform: translateY(-3px);
+    }
+
+    .main-title {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .main-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background-color: #c41e3a;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .main-title:hover {
+      transform: translateY(-5px);
+      text-shadow: 0 5px 15px rgba(196, 30, 58, 0.2);
+    }
+
+    .main-title:hover::after {
+      width: 100%;
+      height: 4px;
+      box-shadow: 0 2px 10px rgba(196, 30, 58, 0.3);
+    }
+
+    .main-title .red {
+      color: #d32f2f;
+      transition: color 0.3s ease;
+    }
+
+    .main-title:hover .red {
+      color: #c41e3a;
+    }
+
+    /* Add scroll-top button styles */
+    .scroll-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 40px;
+        height: 40px;
+        background: #d32f2f;
+        color: white;
+        text-decoration: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+
+    .scroll-top.active {
+        opacity: 1;
+        visibility: visible;
+        bottom: 30px;
+    }
+
+    .scroll-top:hover {
+        background: #ff4b33;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+    }
+
+    /* Add these styles to your existing CSS */
+    .highlight {
+        background-color: var(--accent-color);
+        padding: 2px 4px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    #noResultsMessage {
+        display: none;
+        background-color: var(--base-color);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 600px;
+        box-shadow: var(--accent-color11);
+    }
+    
+  </style>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="darkmode.js" defer></script>
+</head>
+
+<body class="jobs" data-page="jobs">
+  <nav>
+    <ul class="sidebar">
+      <li onclick= "hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+      <li><a href="home.html" class="active">Home</a></li>
+      <li><a href="findjob.html">Find Jobs</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="contactus.html">Contact Us</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="register.html">Register</a></li>
+      <div class="nav-right sidebar-nav-right">
+        <li>
+            <a href="addjobform.html" class="add-job-btn">
+                Add Job Now
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                </svg>
+            </a>
+        </li>
+      </div>
+      <div class="textwidget custom-html-widget"><h4 class="title">Call us</h4>
+        <h6 class="title style-white">+62 8517 9898 921</h6>
+        <div class="elementor-text-editor elementor-clearfix">Gedung Wirausaha Lantai 1 Unit 104
+        Jalan Haji R. Rasuna Said Kavling C5, RT.3/RW.1<br>Karet, Kecamatan Setiabudi<br> Daerah Khusus Ibukota&nbsp;Jakarta&nbsp;12920
+        hello@sabikerja.com</div>
+      </div>
+    </ul>
+    <ul>
+      <li><a href="home.html" class="navbar-logo"><img src="image/logo.png" alt="SabiKerja"></a></li>
+      <li class="hideOnMobile"><a href="home.html">Home</a></li>
+      <li class="hideOnMobile"><a href="findjob.html">Find Jobs</a></li>
+      <li class="hideOnMobile"><a href="blog.html">Blog</a></li>
+      <li class="hideOnMobile"><a href="aboutus.html">About Us</a></li>
+      <li class="hideOnMobile"><a href="contactus.html">Contact Us</a></li>
+      <li class="hideOnMobile"><a href="login.html">Login</a></li>
+      <li class="hideOnMobile"><a href="register.html">Register</a></li>
+      <div class="nav-right">
+        <li class="hideOnMobile">
+            <a href="addjobform.html" class="add-job-btn">
+                Add Job Now
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                </svg>
+            </a>
+        </li>
+      </div>
+      <li class="hideOnMobile"><button id="theme-switch">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/></svg>
+      </button></li>
+    <li class="menu-button" onclick="toggleSidebar()"><a href="#" class="menu-icon"> <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26" fill="#000000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+    </ul>
+  </nav>
+  <div class="header">
+    <h1 class="main-title"><span class="red">Discover</span> Your <span class="red">Dream</span> Job</h1>
+  </div>
+
+  <!-- Replace the search container section with this: -->
+  <div class="findjob-search-container">
+    <div class="findjob-search-wrapper">
+      <input 
+        type="text" 
+        class="findjob-search-input" 
+        placeholder="Search for jobs..."
+        id="findjobSearchInput"
+      >
+      <button class="findjob-search-btn" onclick="searchJobs()">
+        Search Jobs
+      </button>
+    </div>
+  </div>
+
+  <div class="jobs-container" id="jobsContainer">
+    <div class="job-card">
+      <h2 class="job-title">Software Engineer</h2>
+      <p class="company">Company: <span>ABC Tech</span></p>
+      <p class="location">Location: <span>New York, NY</span></p>
+      <p class="description">Seeking experienced software engineer to join our growing team.</p>
+      <a href="jobposting1.html">
+      <button class="apply-btn">Apply Now</button>
+      </a>
+    </div>
+
+    <div class="job-card">
+      <h2 class="job-title">Marketing Coordinator</h2>
+      <p class="company">Company: <span>XYZ Corp</span></p>
+      <p class="location">Location: <span>San Francisco, CA</span></p>
+      <p class="description">Opportunity for a talented marketing professional to join our dynamic company.</p>
+      <a href="jobposting2.html">
+      <button class="apply-btn">Apply Now</button>
+      </a>
+    </div>
+
+    <div class="job-card">
+      <h2 class="job-title">Graphic Designer</h2>
+      <p class="company">Company: <span>Design Collective</span></p>
+      <p class="location">Location: <span>Seattle, WA</span></p>
+      <p class="description">Creative agency looking for a skilled graphic designer to contribute to our projects.</p>
+      <a href="jobposting3.html">
+      <button class="apply-btn">Apply Now</button>
+      </a>
+    </div>
+
+    <div class="job-card">
+      <h2 class="job-title">Product Manager</h2>
+      <p class="company">Company: <span>Innovative Solutions</span></p>
+      <p class="location">Location: <span>Chicago, IL</span></p>
+      <p class="description">Lead the development of our cutting-edge products as a customer-centric product manager.</p>
+      <a href="jobposting4.html">
+      <button class="apply-btn">Apply Now</button>
+      </a>
+    </div>
+
+    <div class="job-card">
+      <h2 class="job-title">Data Analyst</h2>
+      <p class="company">Company: <span>Data-Driven Corp</span></p>
+      <p class="location">Location: <span>Boston, MA</span></p>
+      <p class="description">Utilize your analytical skills to uncover insights and drive business decisions.</p>
+      <a href="jobposting5.html">
+      <button class="apply-btn">Apply Now</button>
+      </a>
+    </div>
+
+    <div class="job-card">
+      <h2 class="job-title">UX Designer</h2>
+      <p class="company">Company: <span>Intuitive Designs</span></p>
+      <p class="location">Location: <span>Portland, OR</span></p>
+      <p class="description">Join our team of designers to create exceptional user experiences for our clients.</p>
+      <a href="jobposting6.html">
+      <button class="apply-btn">Apply Now</button>
+      </a>
+    </div>
+  </div>
+  
+
+   <!-- Footer Section -->
+   <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-contact">
+            <div class="footer-logo">
+              <a href="home.html" ><img src="image/logo.png" alt="SabiKerja"></a>
+            </div>
+            <h3>Call us</h3>
+            <p>+62 21 509-969-69 Ext 1307</p>
+            <p>+62 8517 9898 921</p>
+            <div class="footer-address">
+                Gedung Wirausaha Lantai 1 Unit 104<br>
+                Jalan Haji R. Rasuna Said Kavling C5,<br>
+                RT.3/RW.1, Karet, Kecamatan Setiabudi, Daerah<br>
+                Khusus Ibukota Jakarta 12920<br>
+                <br>
+                hello@sabikerja.com
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h3>For Candidates</h3>
+            <ul>
+                <li><a href="findjob.html">Browse Jobs</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="contactus.html">Contact Us</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h3>Visit Us</h3>
+            <div class="social-links">
+              <a href="https://www.linkedin.com/company/mitra-cahaya-inovasi/"><img src="image/Linkedin.png" alt="LinkedIn"></a>
+              <a href="https://www.instagram.com/sabikerja/"><img src="image/Instagram.png" alt="Instagram"></a>
+              <a href="https://api.whatsapp.com/send/?phone=%2B6285179898921&text=Halo+SabiKerja+Saya+mau+tau+tentang&type=phone_number&app_absent=0"><img src="image/Whatsapp.png" alt="WhatsApp"></a>
+              <a href="https://web.facebook.com/people/Sabi-Kerja/pfbid02rGKkmpsPhaqAEUVFc5dNZc4afWJtCLnapguwHjW1wmDXLADUrtVYLfC8ynzwaVxPl/"><img src="image/Facebook.png" alt="Facebook"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<a href="#" class="scroll-top" id="scrollTop">↑</a>
+
+<!--Feather Icon-->
+<script>
+  function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const menuButton = document.querySelector('.menu-button');
+    
+    if (sidebar.classList.contains('active')) {
+      hideSidebar();
+      menuButton.classList.remove('active');
+    } else {
+      showSidebar();
+      menuButton.classList.add('active');
+    }
+  }
+
+  function showSidebar(){
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = 'flex';
+    // Give time for display:flex to take effect
+    setTimeout(() => {
+      sidebar.classList.add('active');
+    }, 10);
+  }
+  
+  function hideSidebar(){
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.remove('active');
+    // Wait for transition to complete before hiding
+    setTimeout(() => {
+      sidebar.style.display = 'none';
+    }, 300);
+  }
+
+  // Hide sidebar by default
+  document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = 'none';
+  });
+
+  function searchJobs() {
+    const searchTerm = document.getElementById('findjobSearchInput').value.toLowerCase();
+    const jobCards = document.querySelectorAll('.job-card');
+    let foundMatch = false;
+
+    jobCards.forEach(card => {
+        const title = card.querySelector('.job-title').textContent.toLowerCase();
+        const company = card.querySelector('.company').textContent.toLowerCase();
+        const description = card.querySelector('.description').textContent.toLowerCase();
+        const location = card.querySelector('.location').textContent.toLowerCase();
+
+        if (title.includes(searchTerm) || 
+            company.includes(searchTerm) || 
+            description.includes(searchTerm) ||
+            location.includes(searchTerm)) {
+            card.style.display = 'block';
+            foundMatch = true;
+            highlightText(card, searchTerm);
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // Show message if no matches found
+    const noResultsMsg = document.getElementById('noResultsMessage') || createNoResultsMessage();
+    noResultsMsg.style.display = foundMatch ? 'none' : 'block';
+}
+
+// Add event listener for search parameter in URL
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTerm = urlParams.get('search');
+    
+    if (searchTerm) {
+        document.getElementById('findjobSearchInput').value = searchTerm;
+        searchJobs();
+    }
+});
+
+// Add enter key event listener
+document.getElementById('findjobSearchInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        searchJobs();
+    }
+});
+</script>
+<script>
+  feather.replace();
+</script>
+<script src="script.js"></script>
+</body>
+</html>

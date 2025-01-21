@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Engineering - SabiKerja</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fce7d3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 50px;
+        }
+
+        .job-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .job-header h1 {
+            font-size: 25px;
+            color: #2c3e50;
+        }
+
+        .job-header span {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .job-description {
+            margin-bottom: 30px;
+        }
+
+        .job-description p {
+            font-size: 14px;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .job-responsibilities,
+        .job-requirements {
+            margin-bottom: 30px;
+        }
+
+        .job-responsibilities h2,
+        .job-requirements h2 {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .job-responsibilities ul,
+        .job-requirements ul {
+            list-style-type: none;
+            font-size: 14px;
+            color: #4a5568;
+        }
+
+        .job-responsibilities li,
+        .job-requirements li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .job-responsibilities li::before,
+        .job-requirements li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+        }
+
+        .apply-button {
+            display: block;
+            background-color:#d32f2f;
+            color: white;
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+        }
+
+        .apply-button:hover {
+            background-color: #573430;
+        }
+
+        @media (max-width: 600px) {
+            .job-card {
+                padding: 30px;
+            }
+
+            .job-header h1 {
+                font-size: 24px;
+            }
+
+            .job-header span {
+                font-size: 12px;
+            }
+
+            .job-description p,
+            .job-responsibilities ul,
+            .job-requirements ul {
+                font-size: 14px;
+            }
+
+            .job-responsibilities h2,
+            .job-requirements h2 {
+                font-size: 18px;
+            }
+
+            .apply-button {
+                font-size: 14px;
+                padding: 14px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="job-card">
+        <div class="job-header">
+            <h1>Software Engineer</h1>
+            <span>Newyork, NY</span>
+        </div>
+
+        <div class="job-description">
+            <p>SabiKerja is a curated headhunter agency based in Jakarta that is well-known as a one-stop talent solution in which we connect curated quality talent with the institution or company that partners with us.</p>
+            <p>As a Software Engineer, you will represent our client, a leading IT solution provider specializing in IT infrastructure, application development, and IT security. In this role, you will play a pivotal part in designing and developing innovative software solutions while ensuring robust system security and seamless integration with IT infrastructure.</p>
+        </div>
+
+        <div class="job-responsibilities">
+            <h2>Job Responsibilities:</h2>
+            <ul>
+                <li>Develop, test, and maintain high-quality software applications that meet client requirements.</li>
+                <li>Write efficient, scalable, and clean code, ensuring system performance and maintainability.</li>
+                <li>Work closely with cross-functional teams, including designers, project managers, and other developers, to deliver end-to-end solutions.</li>
+                <li>Create and maintain technical documentation for software systems and processes.</li>
+                <li> Integrate software applications with existing IT infrastructure, ensuring seamless functionality and communication between systems.</li>
+                <li> Provide technical support and solutions to clients, addressing feedback and enhancing user experience.</li>
+            </ul>
+        </div>
+
+        <div class="job-requirements">
+            <h2>Job Requirements:</h2>
+            <ul>
+                <li>Bachelor's degree in Business Administration, IT, or related field.</li>
+                <li>Minimum of 2 years of experience in account management within the IT industry.</li>
+                <li>Proven track record of successfully managing government projects.</li>
+                <li>Strong communication and negotiation skills.</li>
+                <li>Ability to work independently and as part of a team.</li>
+                <li>Excellent problem-solving and decision-making abilities.</li>
+            </ul>
+        </div>
+
+        <a href="applyform.html" class="apply-button">Apply for this job</a>
+    </div>
+
+    <script>
+        const applyButton = document.querySelector('.apply-button');
+
+        // Add click animation to the apply button
+        applyButton.addEventListener('click', () => {
+            applyButton.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                applyButton.style.transform = 'scale(1)';
+            }, 150);
+        });
+    </script>
+</body>
+</html>

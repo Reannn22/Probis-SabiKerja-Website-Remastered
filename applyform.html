@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Apply Form</title>
+  <style>
+    /* Custom styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fce7d3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding-top: 15px;
+      padding-bottom: 15px;
+      padding-right: 36px;
+      padding-left: 15px;
+      /*width: 300px;
+      height: 100%;*/
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 15px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #d32f2f;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: center;
+    }
+
+    button:hover {
+      background-color: #526d89;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Apply Now</h1>
+    <form id="apply-form">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="cv">Attach CV</label>
+        <input type="file" id="cv" name="cv" required>
+      </div>
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('apply-form');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+
+      // Here you can handle the form submission, e.g., send the data to a server
+      console.log('Form Data:', formData);
+
+      // Reset the form
+      form.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Registration</title>
+  <style>
+    /* Global Styles */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: var(--body-color);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Container Styles */
+    .registration-container {
+      background-color: var(--body-color);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .registration-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Heading Styles */
+    h1 {
+      margin-bottom: 2rem;
+      color: #666462;
+      position: relative;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--base-color2);
+      transition: width 0.3s ease;
+    }
+
+    .registration-container:hover h1::after {
+      width: 100%;
+    }
+
+    /* Form Elements */
+    .form-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Input Field Styles */
+    input {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--body-color);
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: var(--body-color);
+      color: var(--text-color);
+    }
+
+    input:focus {
+      border-color: var(--base-color2);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #999;
+      transition: all 0.3s ease;
+    }
+
+    input:focus::placeholder {
+      opacity: 0.7;
+      transform: translateX(10px);
+    }
+
+    /* Button Styles */
+    button {
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--base-color2);
+      color: var(--body-color2);
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s ease;
+    }
+
+    button:hover {
+      background-color:#666462;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+
+    /* Login Link Styles */
+    .login-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color:#666462;
+      text-decoration: none;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .login-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--base-color2);
+      transition: width 0.3s ease;
+    }
+
+    .login-link:hover {
+      color: var(--base-color2);
+    }
+
+    .login-link:hover::after {
+      width: 100%;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="darkmode.js" defer></script>
+</head>
+<body class="register" data-page="register">
+  <nav>
+    <ul class="sidebar">
+      <li onclick= "hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+      
+      <li><a href="home.html" >Home</a></li>
+      <li><a href="findjob.html">Find Jobs</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="contactus.html">Contact Us</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="register.html">Register</a></li>
+      <div class="nav-right sidebar-nav-right">
+        <li>
+            <a href="addjobform.html" class="add-job-btn">
+                Add Job Now
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                </svg>
+            </a>
+        </li>
+      </div>
+      <div class="textwidget custom-html-widget"><h4 class="title">Call us</h4>
+        <h6 class="title style-white">+62 8517 9898 921</h6>
+        <div class="elementor-text-editor elementor-clearfix">Gedung Wirausaha Lantai 1 Unit 104
+        Jalan Haji R. Rasuna Said Kavling C5, RT.3/RW.1<br>Karet, Kecamatan Setiabudi<br> Daerah Khusus Ibukota&nbsp;Jakarta&nbsp;12920
+        hello@sabikerja.com</div>
+      </div>
+    </ul>
+    <ul>
+      <li><a href="home.html" class="navbar-logo"><img src="image/logo.png" alt="SabiKerja"></a></li>
+      <li class="hideOnMobile"><a href="home.html" >Home</a></li>
+      <li class="hideOnMobile"><a href="findjob.html">Find Jobs</a></li>
+      <li class="hideOnMobile"><a href="blog.html">Blog</a></li>
+      <li class="hideOnMobile"><a href="aboutus.html">About Us</a></li>
+      <li class="hideOnMobile"><a href="contactus.html">Contact Us</a></li>
+      <li class="hideOnMobile"><a href="login.html">Login</a></li>
+      <li class="hideOnMobile"><a href="register.html">Register</a></li>
+      <div class="nav-right">
+        <li class="hideOnMobile">
+            <a href="addjobform.html" class="add-job-btn">
+                Add Job Now
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                </svg>
+            </a>
+        </li>
+      </div>
+      <li class="hideOnMobile"><button id="theme-switch">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/></svg>
+      </button></li>
+    <li class="menu-button" onclick="toggleSidebar()"><a href="#" class="menu-icon"> <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26" fill="#000000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+    </ul>
+  </nav>
+  <div class="registration-container">
+    <h1>Register</h1>
+    <form id="registration-form">
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+      <button type="submit" class="animate-button">Register</button>
+    </form>
+    <a href="login.html" class="login-link">Already have an account? Login</a>
+  </div>
+
+  <div class="notification" id="notification">
+  </div>
+  
+  <script>
+    const registrationForm = document.getElementById('registration-form');
+    const notification = document.getElementById('notification');
+
+    registrationForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = registrationForm.elements.name.value;
+        const email = registrationForm.elements.email.value;
+        const password = registrationForm.elements.password.value;
+        const confirmPassword = registrationForm.elements.confirmPassword.value;
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            return;
+        }
+
+        // Add loading state
+        const button = registrationForm.querySelector('button');
+        button.classList.add('loading');
+        button.textContent = 'Registering...';
+
+        // Simulate registration process
+        setTimeout(() => {
+            // Show success notification
+            notification.classList.add('show');
+            
+            // Add exit animation
+            document.querySelector('.registration-container').classList.add('fade-out');
+
+            // Redirect to home page
+            setTimeout(() => {
+                window.location.href = 'home.html';
+            }, 1500);
+        }, 1000);
+    });
+  </script>
+
+  <!--Feather Icon-->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      const menuButton = document.querySelector('.menu-button');
+      
+      if (sidebar.classList.contains('active')) {
+        hideSidebar();
+        menuButton.classList.remove('active');
+      } else {
+        showSidebar();
+        menuButton.classList.add('active');
+      }
+    }
+
+    function showSidebar(){
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.style.display = 'flex';
+      // Give time for display:flex to take effect
+      setTimeout(() => {
+        sidebar.classList.add('active');
+      }, 10);
+    }
+    
+    function hideSidebar(){
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.classList.remove('active');
+      // Wait for transition to complete before hiding
+      setTimeout(() => {
+        sidebar.style.display = 'none';
+      }, 300);
+    }
+
+    // Hide sidebar by default
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.style.display = 'none';
+    });
+  </script>
+  <script>
+    feather.replace();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

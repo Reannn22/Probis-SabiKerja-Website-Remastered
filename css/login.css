@@ -1,0 +1,580 @@
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    transition: all 0.3s ease;
+}
+
+.login-form input[type="email"]:hover,
+.login-form input[type="password"]:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form input[type="email"]:focus,
+.login-form input[type="password"]:focus {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: #007bff;
+}
+
+.login-form button {
+    transition: all 0.3s ease;
+}
+
+.login-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background: #0056b3;
+}
+
+.forgot-password {
+    position: relative;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    color: #007bff;
+}
+
+.forgot-password::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #007bff;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.forgot-password:hover::after {
+    transform: scaleX(1);
+}
+
+.form-floating {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form-floating input {
+    height: 60px;
+    padding: 1rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.form-floating label {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    color: #6c757d;
+}
+
+.form-floating input:focus,
+.form-floating input:not(:placeholder-shown) {
+    padding-top: 1.625rem;
+    padding-bottom: 0.625rem;
+    border-color: #0d6efd;
+}
+
+.form-floating input:focus ~ label,
+.form-floating input:not(:placeholder-shown) ~ label {
+    transform: scale(0.85) translateY(-2.5rem);
+    color: #0d6efd;
+}
+
+.login-btn {
+    background: #0d6efd;
+    color: white;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: #0b5ed7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.2);
+}
+
+.forgot-password {
+    color: #6c757d;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.forgot-password:hover {
+    color: #0d6efd;
+}
+
+.forgot-password::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #0d6efd;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.forgot-password:hover::after {
+    transform: scaleX(1);
+}
+
+.login-container h1 {
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.login-container input {
+    transform-origin: left;
+    animation: slideInLeft 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.login-container input:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.login-container input:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.login-container button {
+    animation: fadeInUp 0.5s ease-out forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
+}
+
+.forgot-password {
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 0.8s;
+    opacity: 0;
+}
+
+/* Animations */
+.animate-title {
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.animate-input {
+    animation: slideInLeft 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.animate-input:nth-of-type(1) {
+    animation-delay: 0.2s;
+}
+
+.animate-input:nth-of-type(2) {
+    animation-delay: 0.4s;
+}
+
+.animate-button {
+    animation: fadeInUp 0.5s ease-out forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
+}
+
+.animate-link {
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 0.8s;
+    opacity: 0;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Hover effects */
+.animate-input:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.animate-input:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-color: #d32f2f;
+}
+
+.animate-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
+    background-color: #666462;
+}
+
+/* Input animations */
+.login-container input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.login-container input:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+}
+
+.login-container input:focus {
+    transform: translateY(-3px);
+    border: 2px solid #d32f2f;
+    box-shadow: 0 8px 20px rgba(211, 47, 47, 0.15);
+    outline: none;
+}
+
+/* Button animations */
+.login-container button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.login-container button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #666462;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
+
+.login-container button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(211, 47, 47, 0.2);
+}
+
+.login-container button:hover:before {
+    left: 0;
+}
+
+/* Forgot Password animations */
+.forgot-password {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: inline-block;
+    padding: 2px 4px;
+}
+
+.forgot-password:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #d32f2f;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.forgot-password:hover {
+    color: #d32f2f;
+    transform: translateY(-2px);
+}
+
+.forgot-password:hover:before {
+    transform: scaleX(1);
+}
+
+/* Entrance animations */
+@keyframes formEnter {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.login-container {
+    animation: formEnter 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-container h1 {
+    color: #666462;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+    width: 100%;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #d32f2f;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #d32f2f;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #666462;
+    transform: translateY(-2px);
+}
+
+.forgot-password {
+    color: #666462;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.forgot-password:hover {
+    color: #d32f2f;
+}
+
+/* Loading state animation */
+.login-container button.loading {
+    background: linear-gradient(45deg, #d32f2f 50%, #666462 50%);
+    background-size: 250% 100%;
+    background-position: right bottom;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-container button.loading:hover {
+    background-position: left bottom;
+}
+
+/* Notification styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: -300px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+}
+
+.notification.show {
+    right: 20px;
+}
+
+/* Login success animation */
+.login-container.fade-out {
+    animation: fadeOutUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* Button loading state */
+.animate-button.loading {
+    position: relative;
+    background: linear-gradient(45deg, #d32f2f 50%, #666462 50%);
+    background-size: 200% 100%;
+    animation: gradientSlide 1s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes gradientSlide {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem;
+}
+
+.login-title {
+    font-size: 2rem;
+    color: #666462;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.login-input {
+    width: 100%;
+    min-width: 300px;
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.login-input:hover {
+    border-color: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.1);
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(211, 47, 47, 0.15);
+}
+
+.login-button {
+    width: 100%;
+    min-width: 300px;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: #d32f2f;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+}
+
+.login-button:hover {
+    background: #666462;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(102, 100, 98, 0.2);
+}
+
+.forgot-password {
+    color: #666462;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: inline-block;
+}
+
+.forgot-password::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #d32f2f;
+    transform: scaleX(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.forgot-password:hover {
+    color: #d32f2f;
+}
+
+.forgot-password:hover::after {
+    transform: scaleX(1);
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+/* ...existing code... */

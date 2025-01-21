@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <!--Font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!--Feather Icon-->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <style>
+      button {
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--base-color2);
+      color: var(--body-color2);
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s ease;
+    }
+
+    button:hover {
+      background-color: #666462;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+    /* Add scroll-top button styles */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 40px;
+      height: 40px;
+      background: #ffffff;
+      color: white;
+      text-decoration: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    .scroll-top.active {
+      opacity: 1;
+      visibility: visible;
+      bottom: 30px;
+    }
+
+    .scroll-top:hover {
+      background: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px var(--accent-color11);
+    }
+
+    /* Scroll Top Button Styles */
+    .scroll-top {
+      position: fixed;
+      bottom: -50px; /* Start hidden below viewport */
+      right: 30px;
+      width: 40px;
+      height: 40px;
+      background: var(--base-color2);
+      color: var(--body-color);
+      text-decoration: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+      cursor: pointer;
+    }
+
+    .scroll-top.active {
+      bottom: 30px;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background: #666462;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+  </style><script type="text/javascript" src="darkmode.js" defer></script>
+</head>
+<body class="blog" data-page="blog">
+  <nav>
+    <ul class="sidebar">
+      <li onclick= "hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+      <li><a href="home.html" class="active">Home</a></li>
+      <li><a href="findjob.html">Find Jobs</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="contactus.html">Contact Us</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="register.html">Register</a></li>
+      <div class="nav-right sidebar-nav-right">
+        <li>
+            <a href="addjobform.html" class="add-job-btn">
+                Add Job Now
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                </svg>
+            </a>
+        </li>
+      </div>
+      <div class="textwidget custom-html-widget"><h4 class="title">Call us</h4>
+        <h6 class="title style-white">+62 8517 9898 921</h6>
+        <div class="elementor-text-editor elementor-clearfix">Gedung Wirausaha Lantai 1 Unit 104
+        Jalan Haji R. Rasuna Said Kavling C5, RT.3/RW.1<br>Karet, Kecamatan Setiabudi<br> Daerah Khusus Ibukota&nbsp;Jakarta&nbsp;12920
+        hello@sabikerja.com</div>
+      </div>
+    </ul>
+    <ul>
+      <li><a href="home.html" class="navbar-logo"><img src="image/logo.png" alt="SabiKerja"></a></li>
+      <li class="hideOnMobile"><a href="home.html">Home</a></li>
+      <li class="hideOnMobile"><a href="findjob.html">Find Jobs</a></li>
+      <li class="hideOnMobile"><a href="blog.html">Blog</a></li>
+      <li class="hideOnMobile"><a href="aboutus.html">About Us</a></li>
+      <li class="hideOnMobile"><a href="contactus.html">Contact Us</a></li>
+      <li class="hideOnMobile"><a href="login.html">Login</a></li>
+      <li class="hideOnMobile"><a href="register.html">Register</a></li>
+      <div class="nav-right">
+        <li class="hideOnMobile">
+            <a href="addjobform.html" class="add-job-btn">
+                Add Job Now
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                </svg>
+            </a>
+        </li>
+      </div>
+      <li class="hideOnMobile"><button id="theme-switch">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/></svg>
+      </button></li>
+    <li class="menu-button" onclick="toggleSidebar()"><a href="#" class="menu-icon"> <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26" fill="#000000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+    </ul>
+  </nav>  
+  <!-- Main Section start-->
+  <div class="breadcrumb">
+    <div class="breadcrumb-wrapper">
+      <b  href="home.html">Home</b>
+      <span class="separator">/</span>
+      <a  href="blog.html">Blog</a>
+    </div>
+  </div>
+
+  <!-- First page -->
+  <div class="blog-section">
+    <div class="blog-container">
+      <!-- First Blog Entry -->
+      <div class="blog-entry">
+        <div class="blog-meta">
+          <span class="date">April 19, 2023</span>
+          <span class="category" id="searchInput" >Uncategorized</span>
+          <span class="comments">0 Comments</span>
+        </div>
+        <h2 class="blog-title">Apa saja yang harus disiapkan oleh karyawan merantau?</h2>
+        <p class="blog-excerpt">Merasa cemas dan gugup saat pertama kali merantau bukanlah hal yang aneh. Bahkan, ...</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+
+      <!-- Second Blog Entry -->
+      <div class="blog-entry">
+        <div class="blog-meta">
+          <span class="date">April 19, 2023</span>
+          <span class="category" id="searchInput">Uncategorized</span>
+          <span class="comments">0 Comments</span>
+        </div>
+        <h2 class="blog-title">Hal yang Perlu Ditanyakan di Hari Pertama Kerja</h2>
+        <p class="blog-excerpt">Hari pertama kerja bisa menjadi momen yang menegangkan bagi siapa saja, terutama jika ...</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+
+      <!-- Third Blog Entry -->
+      <div class="blog-entry">
+        <div class="blog-meta">
+          <span class="date">April 19, 2023</span>
+          <span class="category" id="searchInput">Uncategorized</span>
+          <span class="comments">0 Comments</span>
+        </div>
+        <h2 class="blog-title">Cara Cepat Beradaptasi di Kantor yang wajib kamu ketahui</h2>
+        <p class="blog-excerpt">Adaptasi di kantor bisa menjadi tantangan bagi siapa saja, terutama jika kamu baru ...</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+
+      <!-- Fourth Blog Entry -->
+      <div class="blog-entry">
+        <div class="blog-meta">
+          <span class="date">April 19, 2023</span>
+          <span class="category" id="searchInput">Information</span>
+          <span class="comments">0 Comments</span>
+        </div>
+        <h2 class="blog-title">Sertifikasi yang Membuat Kamu Menjadi Poin Plus Oleh Recruiter</h2>
+        <p class="blog-excerpt">Di dunia profesional ini ada beberapa jenis sertifikasi yang membuat kamu lebih glow ...</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+
+      <!-- Pagination -->
+      <div class="blog-pagination">
+        <a href="#" class="page-number" data-page="1">1</a>
+        <a href="#" class="page-number" data-page="2">2</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second page -->
+  <div class="blog-section page-2" style="display: none;">
+    <div class="blog-container">
+      <!-- Fifth Blog Entry -->
+      <div class="blog-entry">
+        <div class="blog-meta">
+          <span class="date">March 31, 2023</span>
+          <span class="category" id="searchInput">Uncategorized</span>
+          <span class="comments">0 Comments</span>
+        </div>
+        <h2 class="blog-title">Cara Ampuh Menghilangkan Rasa Ngantuk saat Puasa</h2>
+        <p class="blog-excerpt">Saat bekerja sering mengalami ngantuk? Ditambah lagi sekarang lagi memasuki bulan puasa. Bulan ...</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+
+      <!-- Sixth Blog Entry -->
+      <div class="blog-entry">
+        <div class="blog-meta">
+          <span class="date">March 9, 2023</span>
+          <span class="category" id="searchInput">Information</span>
+          <span class="comments">0 Comments</span>
+        </div>
+        <h2 class="blog-title">Tips Ampuh Nego Gaji Untuk Fresh Graduate</h2>
+        <p class="blog-excerpt">Lulusan S1 selalu ditawarkan dengan gaji yang rendah. Padahal kompetensi dan skill yang ...</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+
+      <!-- Seventh Blog Entry -->
+      <div class="blog-entry">
+        <div class="blog-meta">
+          <span class="date">March 9, 2023</span>
+          <span class="category" id="searchInput">Information</span>
+          <span class="comments">0 Comments</span>
+        </div>
+        <h2 class="blog-title">Cara Ampuh Dalam Membuat CV yang Menarik Agar Dilirik Oleh Recruiter</h2>
+        <p class="blog-excerpt">Kendala bagi jobseeker dalam mencari kerja adalah tidak mendapat balasan email atau follow-up ...</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+
+      <!-- Eighth Blog Entry -->
+      <div class="blog-entry">
+        <div class="blog-meta">
+          <span class="date">February 23, 2023</span>
+          <span class="category" id="searchInput">Interview</span>
+          <span class="comments">0 Comments</span>
+        </div>
+        <h2 class="blog-title">TIPS INTERVIEW: Pertanyaan yang harus ditanyakan ketika interview</h2>
+        <p class="blog-excerpt">kebanyakan job seeker terlalu berfokus pada jawaban saat proses interview Padahal, kita boleh ...</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+
+      <!-- Ninth Blog Entry -->
+      <div class="blog-entry">
+        <div class="blog-meta">
+          <span class="date">February 23, 2023</span>
+          <span class="category" id="searchInput">Information</span>
+          <span class="comments">0 Comments</span>
+        </div>
+        <h2 class="blog-title">Tips Membuat Portofolio yang Menarik, Jobseeker Wajib Tahu!</h2>
+        <p class="blog-excerpt">Kenapa Portofolio Penting? Portofolio berguna untuk membuktikan bahwa kamu kandidat yang cocok dengan ...</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+
+      <!-- Pagination -->
+      <div class="blog-pagination">
+        <a href="#" class="page-number" data-page="1">1</a>
+        <a href="#" class="page-number" data-page="2">2</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-contact">
+            <div class="footer-logo">
+              <a href="home.html" ><img src="image/logo.png" alt="SabiKerja"></a>
+            </div>
+            <h3>Call us</h3>
+            <p>+62 21 509-969-69 Ext 1307</p>
+            <p>+62 8517 9898 921</p>
+            <div class="footer-address">
+                Gedung Wirausaha Lantai 1 Unit 104<br>
+                Jalan Haji R. Rasuna Said Kavling C5,<br>
+                RT.3/RW.1, Karet, Kecamatan Setiabudi, Daerah<br>
+                Khusus Ibukota Jakarta 12920<br>
+                <br>
+                hello@sabikerja.com
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h3>For Candidates</h3>
+            <ul>
+                <li><a href="findjob.html">Browse Jobs</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="contactus.html">Contact Us</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h3>Visit Us</h3>
+            <div class="social-links">
+              <a href="https://www.linkedin.com/company/mitra-cahaya-inovasi/"><img src="image/Linkedin.png" alt="LinkedIn"></a>
+              <a href="https://www.instagram.com/sabikerja/"><img src="image/Instagram.png" alt="Instagram"></a>
+              <a href="https://api.whatsapp.com/send/?phone=%2B6285179898921&text=Halo+SabiKerja+Saya+mau+tau+tentang&type=phone_number&app_absent=0"><img src="image/Whatsapp.png" alt="WhatsApp"></a>
+              <a href="https://web.facebook.com/people/Sabi-Kerja/pfbid02rGKkmpsPhaqAEUVFc5dNZc4afWJtCLnapguwHjW1wmDXLADUrtVYLfC8ynzwaVxPl/"><img src="image/Facebook.png" alt="Facebook"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<a href="#" class="scroll-top" id="scrollTop">↑</a>
+
+<!--Feather Icon-->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      const menuButton = document.querySelector('.menu-button');
+      
+      if (sidebar.classList.contains('active')) {
+        hideSidebar();
+        menuButton.classList.remove('active');
+      } else {
+        showSidebar();
+        menuButton.classList.add('active');
+      }
+    }
+
+    function showSidebar(){
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.style.display = 'flex';
+      // Give time for display:flex to take effect
+      setTimeout(() => {
+        sidebar.classList.add('active');
+      }, 10);
+    }
+    
+    function hideSidebar(){
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.classList.remove('active');
+      // Wait for transition to complete before hiding
+      setTimeout(() => {
+        sidebar.style.display = 'none';
+      }, 300);
+    }
+
+    // Hide sidebar by default
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.style.display = 'none';
+    });
+
+    // Add this new pagination functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const page1 = document.querySelector('.blog-section');
+      const page2 = document.querySelector('.blog-section.page-2');
+      const pageNumbers = document.querySelectorAll('.page-number');
+      const container = document.querySelector('body');
+      
+      // Set initial state for page 1
+      pageNumbers[0].style.backgroundColor = '#FF4B33';
+      pageNumbers[0].style.color = 'white';
+      pageNumbers[0].style.borderColor = 'white';
+
+      pageNumbers.forEach(number => {
+        number.addEventListener('click', function(e) {
+          e.preventDefault();
+          const pageNum = this.getAttribute('data-page');
+          
+          // Reset all buttons to default state
+          pageNumbers.forEach(btn => {
+            btn.style.backgroundColor = 'white';
+            btn.style.color = '#FF4B33';
+            btn.style.borderColor = '#FF4B33';
+          });
+
+          // Set active button to red
+          this.style.backgroundColor = '#FF4B33';
+          this.style.color = 'white';
+          this.style.borderColor = 'white';
+          
+          if (pageNum === '1') {
+            page1.style.display = 'block';
+            page2.style.display = 'none';
+            container.classList.remove('page-2-active');
+          } else {
+            page1.style.display = 'none';
+            page2.style.display = 'block';
+            container.classList.add('page-2-active');
+          }
+
+          // Scroll to top of blog section
+          window.scrollTo({
+            top: document.querySelector('.blog-section').offsetTop,
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+
+    // ...existing script code...
+  </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const page1 = document.querySelector('.blog-section');
+  const page2 = document.querySelector('.blog-section.page-2');
+  const pageNumbers = document.querySelectorAll('.page-number');
+  
+  // Set initial active state
+  pageNumbers[0].classList.add('active');
+
+  pageNumbers.forEach((number, index) => {
+    number.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Remove active class from all buttons
+      pageNumbers.forEach(btn => btn.classList.remove('active'));
+      
+      // Add active class to clicked button
+      this.classList.add('active');
+      
+      if (index === 0) {
+        page1.style.display = 'block';
+        page2.style.display = 'none';
+      } else {
+        page1.style.display = 'none';
+        page2.style.display = 'block';
+      }
+
+      window.scrollTo({
+        top: document.querySelector('.blog-section').offsetTop,
+        behavior: 'smooth'
+      });
+    });
+  });
+});
+
+// Add scroll-top functionality
+const scrollTop = document.getElementById('scrollTop');
+
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 200) {
+    scrollTop.classList.add('active');
+  } else {
+    scrollTop.classList.remove('active');
+  }
+});
+
+scrollTop.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+</script>
+
+  <script>
+    feather.replace();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

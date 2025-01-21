@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Designer - SabiKerja</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fce7d3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 50px;
+        }
+
+        .job-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .job-header h1 {
+            font-size: 25px;
+            color: #2c3e50;
+        }
+
+        .job-header span {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .job-description {
+            margin-bottom: 30px;
+        }
+
+        .job-description p {
+            font-size: 14px;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .job-responsibilities,
+        .job-requirements {
+            margin-bottom: 30px;
+        }
+
+        .job-responsibilities h2,
+        .job-requirements h2 {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .job-responsibilities ul,
+        .job-requirements ul {
+            list-style-type: none;
+            font-size: 14px;
+            color: #4a5568;
+        }
+
+        .job-responsibilities li,
+        .job-requirements li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .job-responsibilities li::before,
+        .job-requirements li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+        }
+
+        .apply-button {
+            display: block;
+            background-color: #d32f2f;
+            color: white;
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+        }
+
+        .apply-button:hover {
+            background-color: rgb(74, 52, 58);
+        }
+
+        @media (max-width: 600px) {
+            .job-card {
+                padding: 30px;
+            }
+
+            .job-header h1 {
+                font-size: 24px;
+            }
+
+            .job-header span {
+                font-size: 12px;
+            }
+
+            .job-description p,
+            .job-responsibilities ul,
+            .job-requirements ul {
+                font-size: 14px;
+            }
+
+            .job-responsibilities h2,
+            .job-requirements h2 {
+                font-size: 18px;
+            }
+
+            .apply-button {
+                font-size: 14px;
+                padding: 14px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="job-card">
+        <div class="job-header">
+            <h1>Graphic Designer</h1>
+            <span>Seattle, WA</span>
+        </div>
+
+        <div class="job-description">
+            <p>SabiKerja is a curated headhunter agency based in Jakarta that is well-known as a one-stop talent solution in which we connect curated quality talent with the institution or company that partners with us.</p>
+            <p>We are seeking a talented Graphic Designer to bring creative concepts to life and enhance our brand's visual identity. In this role, you will collaborate with the marketing, product, and development teams to produce impactful designs that communicate our message effectively across various platforms.</p>
+        </div>
+
+        <div class="job-responsibilities">
+            <h2>Job Responsibilities:</h2>
+            <ul>
+            <li>Design compelling visuals for social media, websites, presentations, and print materials.</li>
+            <li>Develop and refine the brand's visual identity to ensure consistency across all channels.</li>
+            <li>Collaborate with the marketing team to produce creative assets for campaigns and events.</li>
+            <li>Create mockups and prototypes for new product launches and marketing initiatives.</li>
+            <li>Work with external vendors to prepare designs for printing or production.</li>
+            <li>Stay informed about current design trends and tools to incorporate fresh ideas into projects.</li>
+            <li>Manage multiple projects simultaneously while meeting deadlines.</li>
+            </ul>
+        </div>
+
+        <div class="job-requirements">
+            <h2>Job Requirements:</h2>
+            <ul>
+                <li>Bachelor's degree DKV, or related field.</li>
+                <li>Minimum of 2 years of experience in account management within the IT industry.</li>
+                <li>Proven track record of successfully managing government projects.</li>
+                <li>Strong communication and negotiation skills.</li>
+                <li>Ability to work independently and as part of a team.</li>
+                <li>Excellent problem-solving and decision-making abilities.</li>
+            </ul>
+        </div>
+
+        <a href="applyform.html" class="apply-button">Apply for this job</a>
+    </div>
+
+    <script>
+        const applyButton = document.querySelector('.apply-button');
+
+        // Add click animation to the apply button
+        applyButton.addEventListener('click', () => {
+            applyButton.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                applyButton.style.transform = 'scale(1)';
+            }, 150);
+        });
+    </script>
+</body>
+</html>
